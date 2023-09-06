@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@900&display=swap');
+
+
+#root {
+    font-family: 'Merriweather', serif;
+    background-color: #183D3D;
+}
+.header {
+    font-size: 64px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+
+
+.weather-block {
+    display: flex;
+    justify-content: center;
+    background-color: #93B1A6;
+    border-radius: 15px;
+    width: 370px;
+    height: 753px;
+    margin-left: 186px;
+}
+
+/* Search */
+
+.search-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 41px;
+    width: 310px;
+    height: 49px;
+    border-radius: 15px;
+    border: 1px solid white;
+    background: inherit;
+}
+.search-input {
+    background: inherit;
+    border: none;
+    width: 280px;
+    text-indent: 10px;
+    outline: none;
+}
+.search-btn {
+    background: transparent url('../src/assets/Group\ \(1\).svg');
+    background-repeat: no-repeat;
+    border: none;
+    width: 50px;
+    margin-top: 13px;
+    margin-left: 30px;
+}
