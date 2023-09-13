@@ -8,6 +8,14 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.loading-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px;
+  width: 10px;
+}
 .header-text {
   font-size: 64px;
   color: white;
@@ -181,6 +189,10 @@ body {
   height: 82px;
   border-radius: 15px;
   transition: 0.5s;
+}
+
+.box-detail {
+  color: white;
 }
 
 .weather-week-display {

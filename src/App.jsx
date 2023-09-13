@@ -1,46 +1,84 @@
 import axios from "axios";
 import "./App.css";
-// import SearchBtn from "./assets/search.svg";
-// import LocationImg from "./assets/location.svg";
-// import RainyImg from "./assets/Rainy.svg";
-// import { useState } from "react";
-// import axios from "axios";
+import LoadingImg from "./assets/Loading.gif";
 import Search from "./components/SearchBar";
 import { useEffect, useState } from "react";
-import WeatherDisplay from "./components/WeatherDisplay";
+import ForcastWeather from "./components/ForcastWeather";
+// import WeatherDisplay from "./components/WeatherDisplay";
+import GetCurrentLocation from "./components/CurrentLocation";
 function App() {
-  const [location, setLocation] = useState("");
+  const [data, setData] = useState([]);
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
 
   const apiKey = "8a070dbdc603fbe75754dc616a978f34";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${apiKey}`;
 
-  const weatherAPI = async () => {
-    const response = await axios.get(url);
+  const current_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  // const forcast_URL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${latitude}&lon=${longitude}&cnt={cnt}&appid=${apiKey}`
+  const getCurrentData = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(sucess, error);
+    } else {
+      console.log("Geolocation not supported");
+    }
+  };
 
-    setLocation(response.data);
+  const sucess = async (position) => {
+    const { latitude, longitude } = position.coords;
+    setLatitude(latitude);
+    setLongitude(longitude);
+
+    console.log(`lat : ${latitude}, Lng : ${longitude}`);
+
+    // Make API Call to OpenWeather
+    await axios
+      .get(current_URL)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error Fetching Data", error);
+      });
+  };
+
+  const error = () => {
+    console.log("Unable to retrieve your location");
   };
 
   useEffect(() => {
-    weatherAPI();
-  }, []);
+    getCurrentData();
+    sucess();
+  }, [latitude, longitude]);
 
-  const icon  = location && location.weather && location.weather[0]
+  const season = data && data.weather && data.weather[0];
   return (
     <>
-      <header>
-        <h1 className="header-text">Weather App</h1>
-      </header>
-      <div className="container">
-        <section className="weather-display">
-          <Search />
-          <WeatherDisplay
-            location={location?.name}
-            temperature={(location?.main?.temp - 273.15).toFixed(0)}
-            season={icon.main}
-            dt_txt={location?.dt_txt}
-          />
-        </section>
-      </div>
+      {data.length == 0 ? (
+        <img src={LoadingImg} className="Loading-screen" />
+      ) : (
+        <>
+          <header>
+            <h1 className="header-text">Weather App</h1>
+          </header>
+          <div className="container">
+            <section className="weather-display">
+              <Search />
+              <GetCurrentLocation
+                location={data?.name}
+                temperature={data.main.temp.toFixed(0)}
+                season={season.main}
+                wind={data.wind.speed}
+                humidity={data.main.humidity}
+                visibility={data.visibility}
+                clouds={data.clouds.all}
+              />
+            </section>
+            <section>
+              <ForcastWeather />
+            </section>
+          </div>
+        </>
+      )}
     </>
   );
 }
