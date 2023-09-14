@@ -28,7 +28,7 @@ function GetCurrentLocation({location, temperature, season, wind, humidity, visi
                         <p className="box-detail">Clouds  {clouds}</p>
                     </div>
                     <div className="box-2">
-                        <p className="box-detail">Wind Speed  {wind} Km/h</p>
+                        <p className="box-detail">Wind {wind} Km/h</p>
                     </div>
                 </div>
                 <div className="detail-line-2">

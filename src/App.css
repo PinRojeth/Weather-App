@@ -206,6 +206,7 @@ body {
 .weather-week-display {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 608px;
   min-height: 302px;
   margin-right: 127px;
@@ -217,9 +218,11 @@ body {
   display: flex;
   list-style-type: none;
   text-align: center;
+  flex-direction: column;
+
 }
 
-.day {
+.day-text {
   font-size: 35px;
   margin: 20px;
 }
@@ -229,7 +232,7 @@ body {
   margin-top: 10px;
   color: #ebff00;
 }
-.day1 {
+.day {
   width: 190px;
   height: 250px;
   background-color: #93b1a6;
@@ -238,33 +241,6 @@ body {
   margin-right: 35px;
 }
 
-.day2 {
-  width: 190px;
-  height: 250px;
-  background-color: #93b1a6;
-  opacity: 80%;
-  border-radius: 15px;
-  margin-right: 35px;
-}
-
-
-.day3 {
-  width: 190px;
-  height: 250px;
-    background-color: #93b1a6;
-    opacity: 80%;
-    border-radius: 15px;
-    margin-right: 35px;
-}
-
-.day4 {
-  width: 190px;
-  height: 250px;
-    background-color: #93b1a6;
-    opacity: 80%;
-    border-radius: 15px;
-    margin-right: 35px;
-}
 .img-each-day {
   width: 81px;
 }
@@ -362,7 +338,7 @@ body {
     display: flex;
     width: 317px;
   }
-  
+
   .list-day {
     display: flex;
     flex-direction: column;
@@ -371,7 +347,7 @@ body {
     padding: 0px;
   }
 
-  .img-each-day{
+  .img-each-day {
     width: 34px;
   }
   .days-line-1 {
@@ -382,7 +358,7 @@ body {
     width: 317px;
   }
 
-  .day {
+  .day-text {
     font-size: 24px;
   }
 
@@ -390,25 +366,7 @@ body {
     font-size: 24px;
   }
 
-  .day1 {
-    color: white;
-    height: 63px;
-    background: inherit;
-    border-bottom: 1px solid yellow;
-    width: 370px;
-    border-radius: 0px;
-  }
-
-  .day2 {
-    color: white;
-    height: 63px;
-    background: inherit;
-    border-bottom: 1px solid yellow;
-    width: 370px;
-    border-radius: 0px;
-  }
-
-  .day3{
+  .day {
     color: white;
     height: 63px;
     background: inherit;
@@ -424,21 +382,10 @@ body {
     margin-top: -30px;
   }
 
-  .day4{
-    color: white;
-    height: 63px;
-    background: inherit;
-    border-bottom: 1px solid yellow;
-    width: 370px;
-    border-radius: 0px;
-  }
-  
   .display-each-day {
     display: flex;
     width: 370px;
     justify-content: space-between;
     margin-right: 40px;
   }
-  
 }
-

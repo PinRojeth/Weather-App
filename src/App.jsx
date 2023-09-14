@@ -70,16 +70,19 @@ function App() {
               <Search />
               <GetCurrentLocation
                 location={currentData?.name}
-                temperature={currentData.main.temp.toFixed(0)}
-                season={season.main}
-                wind={currentData.wind.speed}
-                humidity={currentData.main.humidity}
-                visibility={currentData.visibility}
-                clouds={currentData.clouds.all}
+                temperature={currentData?.main?.temp.toFixed(0)}
+                season={season?.main}
+                wind={currentData?.wind?.speed}
+                humidity={currentData?.main?.humidity}
+                visibility={currentData?.visibility}
+                clouds={currentData?.clouds.all}
               />
             </section>
             <section className="weather-week-display">
-              <ForcastWeather />
+              <ForcastWeather 
+              //  dt_txt={(forecastData.list[8].dt_txt).toLocaleDateString('default', {weekday : 'shorts'})}
+             forecastData={forecastData}
+              />
             </section>
           </div>
         </>
