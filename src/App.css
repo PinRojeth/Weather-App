@@ -207,7 +207,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 608px;
-  height: 482px;
+  min-height: 302px;
   margin-right: 127px;
   margin-left: 127px;
   transition: 0.5s;
@@ -360,7 +360,7 @@ body {
   }
   .weather-week-display {
     display: flex;
-    min-height: 120px;
+    width: 317px;
   }
   
   .list-day {
@@ -379,6 +379,7 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0px;
+    width: 317px;
   }
 
   .day {
