@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import "./App.css";
 import LoadingImg from "./assets/Loading.gif";
@@ -7,53 +8,57 @@ import ForcastWeather from "./components/ForcastWeather";
 // import WeatherDisplay from "./components/WeatherDisplay";
 import GetCurrentLocation from "./components/CurrentLocation";
 function App() {
-  const [data, setData] = useState([]);
+  const [currentData, setCurrentData] = useState([]);
+  const [forecastData, setForecastData] = useState([]);
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
 
   const apiKey = "8a070dbdc603fbe75754dc616a978f34";
 
   const current_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-  // const forcast_URL = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${latitude}&lon=${longitude}&cnt={cnt}&appid=${apiKey}`
-  const getCurrentData = () => {
+  const forecast_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+
+  const getCurrentData = async () => {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(sucess, error);
+      navigator.geolocation.getCurrentPosition(async (position) => {
+        const { latitude, longitude } = position.coords;
+        setLatitude(latitude);
+        setLongitude(longitude);
+        // Make API Call to Current OpenWeather
+        await axios
+          .get(current_URL)
+          .then((response) => {
+            setCurrentData(response.data);
+          })
+          .catch((error) => {
+            console.error("Error Fetching Data", error);
+          });
+      });
     } else {
       console.log("Geolocation not supported");
     }
   };
 
-  const sucess = async (position) => {
-    const { latitude, longitude } = position.coords;
-    setLatitude(latitude);
-    setLongitude(longitude);
-
-    console.log(`lat : ${latitude}, Lng : ${longitude}`);
-
-    // Make API Call to OpenWeather
+  const getForcastData = async () => {
     await axios
-      .get(current_URL)
+      .get(forecast_URL)
       .then((response) => {
-        setData(response.data);
+        setForecastData(response.data);
       })
       .catch((error) => {
-        console.error("Error Fetching Data", error);
+        console.error("Error Fetching Data Forecast", error);
       });
-  };
-
-  const error = () => {
-    console.log("Unable to retrieve your location");
   };
 
   useEffect(() => {
     getCurrentData();
-    sucess();
+    getForcastData();
   }, [latitude, longitude]);
 
-  const season = data && data.weather && data.weather[0];
+  const season = currentData && currentData.weather && currentData.weather[0];
   return (
     <>
-      {data.length == 0 ? (
+      {currentData.length == 0 ? (
         <img src={LoadingImg} className="Loading-screen" />
       ) : (
         <>
@@ -64,16 +69,16 @@ function App() {
             <section className="weather-display">
               <Search />
               <GetCurrentLocation
-                location={data?.name}
-                temperature={data.main.temp.toFixed(0)}
+                location={currentData?.name}
+                temperature={currentData.main.temp.toFixed(0)}
                 season={season.main}
-                wind={data.wind.speed}
-                humidity={data.main.humidity}
-                visibility={data.visibility}
-                clouds={data.clouds.all}
+                wind={currentData.wind.speed}
+                humidity={currentData.main.humidity}
+                visibility={currentData.visibility}
+                clouds={currentData.clouds.all}
               />
             </section>
-            <section>
+            <section className="weather-week-display">
               <ForcastWeather />
             </section>
           </div>

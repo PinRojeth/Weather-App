@@ -44,7 +44,7 @@ body {
   width: 310px;
   height: 49px;
   z-index: 100;
-  margin-top: 35px;
+  margin-top: 30px;
   position: absolute;
   transition: 0.5s;
 }
@@ -93,6 +93,10 @@ body {
   color: white;
 }
 
+.rainy-img {
+  width: 200px;
+}
+
 .weather-day {
   text-align: center;
 }
@@ -107,16 +111,20 @@ body {
   text-align: center;
   transition: 0.5s;
 }
+.temperature-and-weather {
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
 
 .temperature-display {
-  color: white;
-  font-size: 48px;
-  margin: 16px;
+  color: #ebff00;
+  font-size: 55px;
+  margin: 5px;
   transition: 0.5s;
 }
 .day-display {
   color: #ebff00;
-  font-size: 28px;
+  font-size: 35px;
   margin: 10px;
   transition: 0.5s;
 }
@@ -210,9 +218,20 @@ body {
   list-style-type: none;
   text-align: center;
 }
+
+.day {
+  font-size: 35px;
+  margin: 20px;
+}
+
+.temp-day {
+  font-size: 39px;
+  margin-top: 10px;
+  color: #ebff00;
+}
 .day1 {
-  width: 164px;
-  height: 220px;
+  width: 190px;
+  height: 250px;
   background-color: #93b1a6;
   opacity: 80%;
   border-radius: 15px;
@@ -220,44 +239,27 @@ body {
 }
 
 .day2 {
-  width: 164px;
-  height: 220px;
+  width: 190px;
+  height: 250px;
   background-color: #93b1a6;
   opacity: 80%;
   border-radius: 15px;
   margin-right: 35px;
 }
 
+
 .day3 {
-  width: 164px;
-  height: 220px;
-  background-color: #93b1a6;
-  opacity: 80%;
-  border-radius: 15px;
-  margin-right: 35px;
+  width: 190px;
+  height: 250px;
+    background-color: #93b1a6;
+    opacity: 80%;
+    border-radius: 15px;
+    margin-right: 35px;
 }
 
 .day4 {
-    width: 164px;
-    height: 220px;
-    background-color: #93b1a6;
-    opacity: 80%;
-    border-radius: 15px;
-    margin-right: 35px;
-}
-
-.day5 {
-    width: 164px;
-    height: 220px;
-    background-color: #93b1a6;
-    opacity: 80%;
-    border-radius: 15px;
-    margin-right: 35px;
-}
-
-.day6 {
-    width: 164px;
-    height: 220px;
+  width: 190px;
+  height: 250px;
     background-color: #93b1a6;
     opacity: 80%;
     border-radius: 15px;
@@ -320,39 +322,45 @@ body {
   .detail-weather {
     display: flex;
     align-items: center;
+    margin-top: 10px;
   }
 
   .detail-line-1 {
     display: flex;
-    width: 187px;
+    width: 232px;
     height: 27px;
   }
   .box-1 {
-    width: 85px;
+    font-size: 8px;
+    width: 100px;
     height: 27px;
   }
   .box-2 {
-    width: 85px;
+    font-size: 8px;
+    width: 100px;
     height: 27px;
   }
 
   .detail-line-2 {
     margin-top: 15px;
     display: flex;
-    width: 187px;
+    width: 232px;
     height: 27px;
   }
 
   .box-3 {
-    width: 85px;
+    font-size: 8px;
+    width: 100px;
     height: 27px;
   }
   .box-4 {
-    width: 85px;
+    font-size: 8px;
+    width: 100px;
     height: 27px;
   }
   .weather-week-display {
     display: flex;
+    min-height: 120px;
   }
   
   .list-day {
@@ -371,6 +379,14 @@ body {
     justify-content: center;
     align-items: center;
     margin: 0px;
+  }
+
+  .day {
+    font-size: 24px;
+  }
+
+  .temp-day {
+    font-size: 24px;
   }
 
   .day1 {
@@ -408,23 +424,6 @@ body {
   }
 
   .day4{
-    color: white;
-    height: 63px;
-    background: inherit;
-    border-bottom: 1px solid yellow;
-    width: 370px;
-    border-radius: 0px;
-  }
-
-  .day5{
-    color: white;
-    height: 63px;
-    background: inherit;
-    border-bottom: 1px solid yellow;
-    width: 370px;
-    border-radius: 0px;
-  }
-  .day6{
     color: white;
     height: 63px;
     background: inherit;
