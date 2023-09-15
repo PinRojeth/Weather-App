@@ -37,18 +37,18 @@ const image = ImageSrc[ImgWeather]
       <div className="detail-weather">
         <div className="detail-line-1">
           <div className="box-1">
-            <p className="box-detail">Clouds {clouds}</p>
+            <p className="box-detail">Cloud <span>{clouds}</span></p>
           </div>
           <div className="box-2">
-            <p className="box-detail">Wind {wind} Km/h</p>
+            <p className="box-detail">Wind <span>{wind}Km/h</span> </p>
           </div>
         </div>
         <div className="detail-line-2">
           <div className="box-3">
-            <p className="box-detail">Humidity {humidity}%</p>
+            <p className="box-detail">Humidity <span>{humidity}%</span></p>
           </div>
           <div className="box-4">
-            <p className="box-detail">Visibility {visibility}</p>
+            <p className="box-detail">Visibility <span>{visibility}</span></p>
           </div>
         </div>
       </div>
