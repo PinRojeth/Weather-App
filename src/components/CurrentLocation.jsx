@@ -9,6 +9,9 @@ import RainyImg from "../assets/Rainy.svg";
 
 function GetCurrentLocation({location, temperature, season, wind, humidity, visibility, clouds}) {
 
+    
+
+
     const currentDay = new Date().toLocaleDateString('default', {weekday : 'long'})
   return (
     <><div className="location-display">

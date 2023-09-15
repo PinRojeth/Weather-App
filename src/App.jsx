@@ -16,7 +16,7 @@ function App() {
   const apiKey = "8a070dbdc603fbe75754dc616a978f34";
 
   const current_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-  const forecast_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+  const forecast_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
   const getCurrentData = async () => {
     if (navigator.geolocation) {

@@ -214,32 +214,35 @@ body {
   transition: 0.5s;
 }
 
-.list-day {
+.days-line-1{
   display: flex;
-  list-style-type: none;
-  text-align: center;
-  flex-direction: column;
+  width: 500px;
+  flex-wrap:wrap
 
+}
+
+.display-each-day{
+  width: 190px;
+  height: 250px;
+  background-color: #93b1a6;
+  border-radius: 15px;
+  text-align: center;
+  margin-right: 35px;
+  margin-bottom: 35px;
 }
 
 .day-text {
   font-size: 35px;
   margin: 20px;
+  color: white;
 }
 
 .temp-day {
-  font-size: 39px;
-  margin-top: 10px;
+  font-size: 30px;
+  margin-top: 20px;
   color: #ebff00;
 }
-.day {
-  width: 190px;
-  height: 250px;
-  background-color: #93b1a6;
-  opacity: 80%;
-  border-radius: 15px;
-  margin-right: 35px;
-}
+
 
 .img-each-day {
   width: 81px;
@@ -336,56 +339,54 @@ body {
   }
   .weather-week-display {
     display: flex;
-    width: 317px;
-  }
-
-  .list-day {
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     width: 370px;
-    padding: 0px;
+  
   }
+
+
 
   .img-each-day {
     width: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
   }
   .days-line-1 {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0px;
-    width: 317px;
+    width: 370px;
   }
 
   .day-text {
     font-size: 24px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 0;
+    
   }
 
   .temp-day {
     font-size: 24px;
-  }
-
-  .day {
-    color: white;
-    height: 63px;
-    background: inherit;
-    border-bottom: 1px solid yellow;
-    width: 370px;
-    border-radius: 0px;
-  }
-
-  .days-line-2 {
+    width: 60px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    margin-top: -30px;
+    justify-content: flex-end;
   }
+
 
   .display-each-day {
     display: flex;
-    width: 370px;
     justify-content: space-between;
-    margin-right: 40px;
+    width: 500px ;
+    background: inherit;
+    border-bottom: 1px solid #ebff00;
+    border-radius: 0px;
+    height: 60px;
+    margin: 5px;
   }
 }
