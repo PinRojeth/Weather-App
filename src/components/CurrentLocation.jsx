@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+
+// This Function is for getting to local data
 import LocationImg from "../assets/location.svg";
 import {ImageSrc} from "./ImgDisplay";
 
@@ -13,6 +15,7 @@ function GetCurrentLocation({
   ImgWeather,
 }) {
 
+    // This variable is for containing the Key of Image
 const image = ImageSrc[ImgWeather]
   const currentDay = new Date().toLocaleDateString("default", {
     weekday: "long",

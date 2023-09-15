@@ -1,3 +1,5 @@
+// This Component is for exporting the Image of the icon weather
+
 import Day from "../assets/openweathermap/01d.svg";
 import Night from "../assets/openweathermap/01n.svg"
 import SunCloud from "../assets/openweathermap/02d.svg"

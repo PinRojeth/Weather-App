@@ -1,10 +1,14 @@
 /* eslint-disable react/prop-types */
+// Import The Image Component
 import { ImageSrc } from "./ImgDisplay";
+
+// Function for geting the data from the forecast API
 function ForcastWeather({ forecastData }) {
 
 
   let data_date = [];
   
+  // Loop to get each data of the forcast in each day
   for (let day = 8; day < forecastData?.list?.length; day += 8) {
     data_date.push(forecastData.list[day]);
   }

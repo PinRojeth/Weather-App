@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from "axios";
 import "./App.css";
-import LoadingImg from "./assets/Loading.gif";
+import LoadingImg from "./assets/Loading.svg";
 import Search from "./components/SearchBar";
 import { useEffect, useState } from "react";
-import ForcastWeather from "./components/ForcastWeather";
+import ForcastWeather from "./components/ForecastWeather";
 import GetCurrentLocation from "./components/CurrentLocation";
 function App() {
   const [currentData, setCurrentData] = useState([]);
@@ -17,6 +17,8 @@ function App() {
   const current_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
   const forecast_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
 
+
+  // This calling is using for Fetching the current location 
   const getCurrentData = async () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async (position) => {
@@ -37,6 +39,7 @@ function App() {
       console.log("Geolocation not supported");
     }
   };
+  // This calling is using for Fetching the forecast weather Data
 
   const getForcastData = async () => {
     await axios
@@ -49,12 +52,13 @@ function App() {
       });
   };
 
+  // useEffect is using for render each fetching
   useEffect(() => {
     getCurrentData();
     getForcastData();
   }, [latitude, longitude]);
 
-  const season = currentData && currentData.weather && currentData.weather[0];
+
   // const weatherDescription = forecastData && forecastData.weather && forecastData.weather[0];
   return (
     <>
@@ -71,7 +75,7 @@ function App() {
               <GetCurrentLocation
                 location={currentData?.name}
                 temperature={currentData?.main?.temp.toFixed(0)}
-                season={season?.main}
+                season={currentData && currentData.weather && currentData.weather[0].main}
                 wind={currentData?.wind?.speed}
                 humidity={currentData?.main?.humidity}
                 visibility={currentData?.visibility}
