@@ -93,13 +93,14 @@ body {
   color: white;
 }
 
-.rainy-img {
+.img-description {
   width: 200px;
 }
 
 .weather-day {
   text-align: center;
 }
+
 
 .text-season {
   margin: 0px;
@@ -267,7 +268,7 @@ body {
   }
   .search-form {
     padding: 0px;
-    width: 390px;
+    width: 370px;
     margin-top: -80px;
   }
   .search-btn {
@@ -290,8 +291,8 @@ body {
     display: flex;
   }
 
-  .rainy-img {
-    width: 89px;
+  .img-description {
+    width: 95px;
   }
 
   .line {
@@ -344,10 +345,10 @@ body {
   
   }
 
-
+ 
 
   .img-each-day {
-    width: 34px;
+    width: 60px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
