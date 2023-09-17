@@ -12,10 +12,14 @@ function App() {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
 
-  const apiKey = "8a070dbdc603fbe75754dc616a978f34";
+  const API_KEY = import.meta.env.VITE_API_KEY;
+  const BASE_CURRENT_URL = import.meta.env.VITE_CURRENT_URL;
+  const BASE_FORECAST_URL = import.meta.env.VITE_FORECAST_URL;
+  const BASE_SEARCH_CURRENT_URL = import.meta.env.VITE_SEARCH_CURRENT_URL;
+  const BASE_SEARCH_FORECAST_URL = import.meta.env.VITE_SEARCH_FORECAST_URL;
 
-  const current_URL = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-  const forecast_URL = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
+  const current_URL = `${BASE_CURRENT_URL}lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
+  const forecast_URL = `${BASE_FORECAST_URL}lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`;
 
 
   // This calling is using for Fetching the current location 
@@ -52,6 +56,21 @@ function App() {
       });
   };
 
+  const searchCity = async (search) => {
+    await axios.get(`${BASE_SEARCH_CURRENT_URL}q=${search}&appid=${API_KEY}&units=metric`)
+    .then((response) => {
+      setCurrentData(response.data)
+    })
+    await axios.get(`${BASE_SEARCH_FORECAST_URL}q=${search}&appid=${API_KEY}&units=metric`)
+    .then((response) => {
+      setForecastData(response.data)
+    })
+    .catch((error) => {
+      console.error(`Error Searching Data`);
+    })
+  }
+
+
   // useEffect is using for render each fetching
   useEffect(() => {
     getCurrentData();
@@ -59,10 +78,9 @@ function App() {
   }, [latitude, longitude]);
 
 
-  // const weatherDescription = forecastData && forecastData.weather && forecastData.weather[0];
   return (
     <>
-      {currentData.length == 0 ? (
+      {currentData.length === 0 ? (
         <img src={LoadingImg} className="Loading-screen" />
       ) : (
         <>
@@ -71,7 +89,7 @@ function App() {
           </header>
           <div className="container">
             <section className="weather-display">
-              <Search />
+              <Search  SearchCity={searchCity}/>
               <GetCurrentLocation
                 location={currentData?.name}
                 temperature={currentData?.main?.temp.toFixed(0)}
@@ -79,7 +97,7 @@ function App() {
                 wind={currentData?.wind?.speed}
                 humidity={currentData?.main?.humidity}
                 visibility={currentData?.visibility}
-                clouds={currentData?.clouds.all}
+                clouds={currentData?.clouds?.all}
                 ImgWeather={currentData?.weather && currentData?.weather[0]?.icon}
               />
             </section>
