@@ -1,10 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchBtn from "../assets/search.svg";
-import GetCurrentLocation from "./CurrentLocation";
 
 function SearchLocation({ SearchCity }) {
   const [search, setSearch] = useState("");
-
 
 
   const handleChange = (e) => {
